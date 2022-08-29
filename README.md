@@ -20,6 +20,15 @@ You have to edit the Descriptor.json file, there are 3 first level section which
 - Output
 - Format
 
+### Output
+Output contain the array of the output field to print. You may want to generate more fields and join some of them, but then print only a subset (e.g. print the joined result but not the single filed used in the join)
+
+### Format 
+Here you can specify the output format
+- CSV
+- JSON
+- ARRAY
+- 
 ### Fields
 Fields contains the information on the output to generate. You need to add a section for each field you want to generate, the name of the section in the actual field name. The section need to contain the mandatory property "type" which can be:
 - counter
@@ -31,15 +40,36 @@ Fields contains the information on the output to generate. You need to add a sec
 #### Counter
 If type is counter, you also need to specify the property start. Counter produce a progressive number starting from the property "start"
 
-#### categorical
+#### Nategorical
+If type is categorical, you need to specify other 2 properties: "values" and "likelihood".  Categorical produce a list of string in output. The property Values is an array of the string to produce in output, the property likelihood is an array (same dimension of values) which specify the probability for each values:
+E.g.
 
 
+```
+        "Class" : {
+            "type" : "categorical",
+            "values" : ["L","M","H"],
+            "likelihood" : [20,30,100]
+        }
+   
+```
+   Produce for the field called Class the output L or H ot M
+   Print out L with the probability of 20%
+   Print out M with the probability of 10% (30 - 20)
+   Print out H with the probability of 70% (70 - 30)
+   
+#### Normal
+If type is normal you need to specify the decimal position the mean and the variance. Normal print out a random number with the normal (or Gaussian) distribution.
 
-### Output
-Output contain the array of the output field to print. You may want to generate more fields and join some of them, but then print only a subset (e.g. print the joined result but not the single filed used in the join)
+E.g.
+```
+        "Air temperature [K]" : {
+            "type" : "normal",
+            "decimal" : 1,
+            "distribution" : {
+                "mean" : 300,
+                "variance" :4
+            }
+        }
+   ```
 
-### Format 
-Here you can specify the output format
-- CSV
-- JSON
-- ARRAY
