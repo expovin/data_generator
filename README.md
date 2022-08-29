@@ -21,7 +21,19 @@ You have to edit the Descriptor.json file, there are 3 first level section which
 - Format
 
 ### Fields
-Fields contains the information on the output to generate. You need to add a section for each field,
+Fields contains the information on the output to generate. You need to add a section for each field you want to generate, the name of the section in the actual field name. The section need to contain the mandatory property "type" which can be:
+- counter
+- categorical
+- normal
+- uniform
+- join
+
+#### Counter
+If type is counter, you also need to specify the property start. Counter produce a progressive number starting from the property "start"
+
+#### categorical
+
+
 
 ### Output
 Output contain the array of the output field to print. You may want to generate more fields and join some of them, but then print only a subset (e.g. print the joined result but not the single filed used in the join)
