@@ -1,0 +1,65 @@
+{
+    "fields" : {
+        "UID" :{
+            "type" : "counter",
+            "start"  : 1
+        },
+        "Air temperature [K]" : {
+            "type" : "normal",
+            "decimal" : 1,
+            "distribution" : {
+                "mean" : 300,
+                "variance" :4
+            }
+        },
+        "Prod id num" : {
+            "type" : "counter",
+            "start"  : 72000
+        },
+        "Type" : {
+            "type" : "categorical",
+            "values" : ["L","M","H"],
+            "likelihood" : [20,30,100]
+        },
+        "Product ID" : {
+            "type" : "join",
+            "fields" : ["Type","Prod id num"]
+        },
+        "Process temperature [K]" :{
+            "type" : "normal",
+            "decimal" : 1,
+            "distribution" : {
+                "mean" : 309,
+                "variance" :7
+            }
+        },
+        "Rotational speed [rpm]" :{
+            "type" : "normal",
+            "min" : 600,
+            "distribution" : {
+                "mean" : 1450,
+                "variance" :70
+                
+            }
+        },
+        "Torque [Nm]" :{
+            "type" : "normal",
+            "decimal" : 1,
+            "distribution" : {
+                "mean" : 40,
+                "variance" :8
+            }
+        },
+        "Tool wear [min]" :{
+            "type" : "uniform",
+            "decimal" : 0,
+            "distribution" : {
+                "from" : 0,
+                "to" :250
+                
+            }
+        }
+    },
+    "Output" : ["UID","Product ID","Type","Air temperature [K]","Process temperature [K]","Rotational speed [rpm]","Torque [Nm]","Tool wear [min]"],
+    "Format" : "CSV"   
+}
