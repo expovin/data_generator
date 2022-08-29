@@ -14,3 +14,20 @@ Download the zip file or clone di repo, then from the project folder in a consol
 npm install
 ```
 
+## How to use it
+You have to edit the Descriptor.json file, there are 3 first level section which are:
+- Fields
+- Output
+- Format
+
+### Fields
+Fields contains the information on the output to generate. You need to add a section for each field,
+
+### Output
+Output contain the array of the output field to print. You may want to generate more fields and join some of them, but then print only a subset (e.g. print the joined result but not the single filed used in the join)
+
+### Format 
+Here you can specify the output format
+- CSV
+- JSON
+- ARRAY
