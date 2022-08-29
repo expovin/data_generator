@@ -72,4 +72,33 @@ E.g.
             }
         }
    ```
+Produce for the field called "Air temperature [K]" a random number with 1 decimal with the mean of 300 and a variance (standard deviation) of 4.
 
+#### Uniform
+If type is uniform you need to specify the decimal position the from and the to properties. Uniform print out a random number with the uniform distribution (all the number have the same probability)
+
+E.g.
+```
+        "Tool wear [min]" :{
+            "type" : "uniform",
+            "decimal" : 0,
+            "distribution" : {
+                "from" : 0,
+                "to" :250
+                
+            }
+   ```
+   Produce for the field called "Tool wear [min]" a random number between 0 and 250. All the number with the same probability.
+
+
+#### Join
+If type is join you need to specify "fields" as property. Fields is an array of the fields to join.
+
+E.g.
+```
+        "Product ID" : {
+            "type" : "join",
+            "fields" : ["Type","Prod id num"]
+        }
+   ```
+Produce a the field called "Product ID" as concatenation of "Type" and "Prod id num"
